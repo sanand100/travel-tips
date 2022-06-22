@@ -4,13 +4,14 @@ import { useSearchParams } from 'react-router-dom';
 import CityDetails from './CityDetails';
 import SearchForm from './SearchForm';
 import Container from 'react-bootstrap/Container';
+import './HomeAndSearch.css';
 
 function Search({ searchOptions }) {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const requestedSearch = searchParams.get('searchString');
 	const [searchString, setSearchString] = useState(requestedSearch || '');
 	const [lastSearch, setLastSearch] = useState('');
-	const [galleryImages, setGalleryImages] = useState([]);
+	const [galleryImages, setGalleryImages] = useState({});
 	const [search, setSearch] = useState(false);
 
 	const handleChange = (event) => {
@@ -24,22 +25,16 @@ function Search({ searchOptions }) {
 
 	const getData = (searchString) => {
 		if (searchString) {
-			const url = `${searchOptions.url}/collection?key=${
-				searchOptions.key
-			}&q=${searchString.toLowerCase()}&ps=20`;
+			let cityInput = 'berlin';
+			const baseUrl =
+				'https://api.weatherapi.com/v1/current.json?key=b39f7c62b71b42a4b4732303221606&q=';
+			const url = `${baseUrl}${cityInput}&aqi=no`;
 			fetch(url)
 				.then((res) => res.json())
-				.then((res) => {
-					setGalleryImages(res.artObjects);
-					setLastSearch(searchString);
-					setSearchParams({ searchString });
-					setSearch(true);
-					setSearchString('');
-				})
+				.then((res) => setGalleryImages(res))
 				.catch(console.error);
 		}
 	};
-
 	useEffect(() => {
 		if (requestedSearch) {
 			getData(requestedSearch);
@@ -63,9 +58,9 @@ function Search({ searchOptions }) {
 						<span style={{ fontStyle: 'italic' }}>{lastSearch}:</span>{' '}
 					</p>
 					<CityDetails
-						images={galleryImages}
-						getGalleryImages={getData}
-						searchOptions={searchOptions}
+					// images={galleryImages}
+					// getGalleryImages={getData}
+					// searchOptions={searchOptions}
 					/>
 				</>
 			)}

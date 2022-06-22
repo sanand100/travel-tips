@@ -1,10 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import Container from 'react-bootstrap/Container';
 
 function CityDetails(props) {
 	const [weatherData, setWeatherData] = useState({});
 	const getWeatherData = () => {
-		let cityInput = 'berlin';
+		let cityInput = 'boston';
 		const baseUrl =
 			'https://api.weatherapi.com/v1/current.json?key=b39f7c62b71b42a4b4732303221606&q=';
 		const url = `${baseUrl}${cityInput}&aqi=no`;
@@ -17,12 +18,20 @@ function CityDetails(props) {
 	useEffect(() => {
 		getWeatherData();
 	}, []);
+
 	// console.log(weatherData.location.name);
 	return (
-		<div>
-			{weatherData.location ? weatherData.location.name : null}
+		<Container className='text-white bg-dark'>
+			City: {weatherData.location ? weatherData.location.name : null}
+			<br />
+			Local Time: {weatherData.location ? weatherData.location.localtime : null}
+			<br />
+			Local Temp.(Fahrenheit):
+			{weatherData.current ? weatherData.current.temp_f : null}
+			<br />
+			{/* {weatherData.current ? Object.entries(weatherData.current).map((data) => {return}) : null} */}
 			{/* {weatherData.location.name} */}
-		</div>
+		</Container>
 	);
 }
 

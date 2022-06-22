@@ -7,29 +7,33 @@ import { ReactRouter as Router } from 'react-router-dom';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import CityDetails from './Components/CityDetails';
+import Navigation from './Components/Navigation';
+import Inspiration from './Components/Inspiration';
 
 function App() {
-	const [searchOptions, setSearchOptions] = useState({
-		key: process.env.REACT_APP_RIJKS_KEY,
-		url: 'https://www.rijksmuseum.nl/api/en/',
-		numberOfResults: 15,
-	});
+	// const [searchOptions, setSearchOptions] = useState({
+	// 	key: process.env.REACT_APP_RIJKS_KEY,
+	// 	url: 'https://www.rijksmuseum.nl/api/en/',
+	// 	numberOfResults: 15,
+	// });
 	return (
 		<div>
 			<header>
 				<Header />
 			</header>
+
+			<nav>
+				<Navigation />
+			</nav>
 			<main>
-				<SearchForm />
+				{/* <SearchForm /> */}
 				{/* <HomeAndSearch /> */}
-				<CityDetails />
-				{/* <Routes>
-					<Route
-						path='/search'
-						element={<Search searchOptions={searchOptions} />}
-					/>
-					;
-				</Routes> */}
+				{/* <CityDetails /> */}
+				<Routes>
+					<Route path='/inspiration' element={<Inspiration />} />
+					<Route path='/weather' element={<CityDetails />} />
+					<Route path='/home' element={<HomeAndSearch />} />
+				</Routes>
 			</main>
 		</div>
 	);
