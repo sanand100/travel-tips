@@ -1,0 +1,154 @@
+[
+	{
+		"id": "VA8aPObRynlwR1TGzbzraQ",
+		"alias": "founding-farmers-washington-washington-3",
+		"name": "Founding Farmers - Washington",
+		"image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/5VG0tTA7qxdWB1B5-nDf-Q/o.jpg",
+		"is_closed": false,
+		"url": "https://www.yelp.com/biz/founding-farmers-washington-washington-3?adjust_creative=sIsXmah-sGpHaKBjU3KOFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=sIsXmah-sGpHaKBjU3KOFA",
+		"review_count": 14830,
+		"categories": [
+			{
+				"alias": "tradamerican",
+				"title": "American (Traditional)"
+			},
+			{
+				"alias": "coffee",
+				"title": "Coffee & Tea"
+			},
+			{
+				"alias": "breakfast_brunch",
+				"title": "Breakfast & Brunch"
+			}
+		],
+		"rating": 4,
+		"coordinates": {
+			"latitude": 38.90039726470812,
+			"longitude": -77.04465954281389
+		},
+		"transactions": ["pickup", "delivery"],
+		"price": "$$",
+		"location": {
+			"address1": "1924 Pennsylvania Ave NW",
+			"address2": "",
+			"address3": "",
+			"city": "Washington, DC",
+			"zip_code": "20006",
+			"country": "US",
+			"state": "DC",
+			"display_address": ["1924 Pennsylvania Ave NW", "Washington, DC 20006"]
+		},
+		"phone": "+12028228783",
+		"display_phone": "(202) 822-8783",
+		"distance": 1714.5553081334763
+	},
+	{
+		"id": "H4jJ7XB3CetIr1pg56CczQ",
+		"alias": "levain-bakery-new-york",
+		"name": "Levain Bakery",
+		"image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/DH29qeTmPotJbCSzkjYJwg/o.jpg",
+		"is_closed": false,
+		"url": "https://www.yelp.com/biz/levain-bakery-new-york?adjust_creative=sIsXmah-sGpHaKBjU3KOFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=sIsXmah-sGpHaKBjU3KOFA",
+		"review_count": 8934,
+		"categories": [
+			{
+				"alias": "bakeries",
+				"title": "Bakeries"
+			}
+		],
+		"rating": 4.5,
+		"coordinates": {
+			"latitude": 40.779961,
+			"longitude": -73.980299
+		},
+		"transactions": [],
+		"price": "$$",
+		"location": {
+			"address1": "167 W 74th St",
+			"address2": "",
+			"address3": "",
+			"city": "New York",
+			"zip_code": "10023",
+			"country": "US",
+			"state": "NY",
+			"display_address": ["167 W 74th St", "New York, NY 10023"]
+		},
+		"phone": "+19174643769",
+		"display_phone": "(917) 464-3769",
+		"distance": 8369.262424680568
+	},
+	{
+		"id": "wGl_DyNxSv8KUtYgiuLhmA",
+		"alias": "bi-rite-creamery-san-francisco",
+		"name": "Bi-Rite Creamery",
+		"image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/k4ild0zOWGDOe-skHQ-Nug/o.jpg",
+		"is_closed": false,
+		"url": "https://www.yelp.com/biz/bi-rite-creamery-san-francisco?adjust_creative=sIsXmah-sGpHaKBjU3KOFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=sIsXmah-sGpHaKBjU3KOFA",
+		"review_count": 9808,
+		"categories": [
+			{
+				"alias": "icecream",
+				"title": "Ice Cream & Frozen Yogurt"
+			}
+		],
+		"rating": 4.5,
+		"coordinates": {
+			"latitude": 37.761591,
+			"longitude": -122.425717
+		},
+		"transactions": ["delivery"],
+		"price": "$$",
+		"location": {
+			"address1": "3692 18th St",
+			"address2": null,
+			"address3": "",
+			"city": "San Francisco",
+			"zip_code": "94110",
+			"country": "US",
+			"state": "CA",
+			"display_address": ["3692 18th St", "San Francisco, CA 94110"]
+		},
+		"phone": "+14156265600",
+		"display_phone": "(415) 626-5600",
+		"distance": 946.3867385272524
+	},
+	{
+		"id": "6I28wDuMBR5WLMqfKxaoeg",
+		"alias": "pike-place-chowder-seattle",
+		"name": "Pike Place Chowder",
+		"image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/ZyQjV-wJQ2GHyX7l3jfbyg/o.jpg",
+		"is_closed": false,
+		"url": "https://www.yelp.com/biz/pike-place-chowder-seattle?adjust_creative=sIsXmah-sGpHaKBjU3KOFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=sIsXmah-sGpHaKBjU3KOFA",
+		"review_count": 8112,
+		"categories": [
+			{
+				"alias": "seafood",
+				"title": "Seafood"
+			},
+			{
+				"alias": "soup",
+				"title": "Soup"
+			}
+		],
+		"rating": 4.5,
+		"coordinates": {
+			"latitude": 47.60939,
+			"longitude": -122.34112
+		},
+		"transactions": ["pickup", "delivery"],
+		"price": "$$",
+		"location": {
+			"address1": "1530 Post Aly",
+			"address2": "Ste 11",
+			"address3": "",
+			"city": "Seattle",
+			"zip_code": "98101",
+			"country": "US",
+			"state": "WA",
+			"display_address": ["1530 Post Aly", "Ste 11", "Seattle, WA 98101"]
+		},
+		"phone": "+12062672537",
+		"display_phone": "(206) 267-2537",
+		"distance": 1832.3954750895075
+	}
+]
