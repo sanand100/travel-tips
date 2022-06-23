@@ -11,12 +11,11 @@ import Inspiration from './Components/Inspiration';
 // import axios from 'axios';
 
 function App() {
-	// const [searchOptions, setSearchOptions] = useState({
-	// 	key: process.env.REACT_APP_RIJKS_KEY,
-	// 	url: 'https://www.rijksmuseum.nl/api/en/',
-	// 	numberOfResults: 15,
-	// });
-
+	const [searchOptions, setSearchOptions] = useState({
+		key: process.env.REACT_APP_WEATHER_KEY,
+		url: 'https://api.weatherapi.com/v1/current.json?key=',
+		numberOfResults: 15,
+	});
 	return (
 		<div>
 			<header>
@@ -34,7 +33,10 @@ function App() {
 				<Routes>
 					<Route path='/inspiration' element={<Inspiration />} />
 					{/* <Route path='/weather' element={<CityDetails />} /> */}
-					<Route path='/home' element={<Search />} />
+					<Route
+						path='/home'
+						element={<Search searchOptions={searchOptions} />}
+					/>
 					<Route path='*' element={<Navigate to='/home' />} />
 				</Routes>
 			</main>

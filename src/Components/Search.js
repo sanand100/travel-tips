@@ -27,8 +27,10 @@ function Search({ searchOptions }) {
 	const getData = (searchString) => {
 		if (searchString) {
 			// let cityInput = 'berlin';
-			const baseUrl = 'https://api.weatherapi.com/v1/current.json?key=';
-			const url = `${baseUrl}b39f7c62b71b42a4b4732303221606&q=${searchString.toLowerCase()}&aqi=no`;
+			// const baseUrl = 'https://api.weatherapi.com/v1/current.json?key=';
+			const url = `${searchOptions.url}${
+				searchOptions.key
+			}&q=${searchString.toLowerCase()}&aqi=no`;
 			fetch(url)
 				.then((res) => res.json())
 				.then((res) => setCurrentWeather(res))
