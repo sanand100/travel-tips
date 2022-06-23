@@ -1,18 +1,18 @@
 ///// Search.js
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import CityDetails from './CityDetails';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import SearchForm from './SearchForm';
 import Container from 'react-bootstrap/Container';
-import { Routes, Route, Navigate } from 'react-router-dom';
+
 // import './HomeAndSearch.css';
 
-function Search({ searchOptions }) {
+function Search({ searchOptions, currentWeather, setCurrentWeather }) {
+	let navigate = useNavigate();
 	const [searchParams, setSearchParams] = useSearchParams();
 	const requestedSearch = searchParams.get('searchString');
 	const [searchString, setSearchString] = useState(requestedSearch || '');
 	const [lastSearch, setLastSearch] = useState('');
-	const [currentWeather, setCurrentWeather] = useState({});
+	// const [currentWeather, setCurrentWeather] = useState({});
 	const [search, setSearch] = useState(false);
 
 	const handleChange = (event) => {
@@ -22,6 +22,7 @@ function Search({ searchOptions }) {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		getData(searchString);
+		navigate('/weather');
 	};
 
 	const getData = (searchString) => {
@@ -61,10 +62,10 @@ function Search({ searchOptions }) {
 						Showing results for{' '}
 						<span style={{ fontStyle: 'italic' }}>{lastSearch}:</span>{' '}
 					</p> */}
-			<CityDetails
+			{/* <CityDetails
 				weatherDataLocation={currentWeather.location}
 				weatherDataCurrent={currentWeather.current}
-			/>
+			/> */}
 			{/* </>
 			)}
 			{search && !currentWeather.length && (
