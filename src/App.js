@@ -1,7 +1,6 @@
 import Header from './Components/Header';
 import './App.css';
 // import HomeAndSearch from './Components/HomeAndSearch';
-import SearchForm from './Components/SearchForm';
 import Search from './Components/Search';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useState } from 'react';
