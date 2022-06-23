@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useParams } from 'react';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import './CityDetails.css';
 
 function CityDetails({ weatherDataLocation, weatherDataCurrent }) {
+	// const { city } = useParams();
 	// const [weatherData, setWeatherData] = useState({});
 	// const getWeatherData = () => {
 	// 	let cityInput = 'boston';

@@ -19,12 +19,12 @@ const Navigation = () => {
 					<Nav.Link as={Link} to='./inspiration'>
 						Inspiration
 					</Nav.Link>
-					<Nav.Link as={Link} to='/weather'>
+					{/* <Nav.Link as={Link} to='/weather'>
 						Weather Information
-					</Nav.Link>
-					<Nav.Link as={Link} to='/search'>
+					</Nav.Link> */}
+					{/* <Nav.Link as={Link} to='/search'>
 						Search
-					</Nav.Link>
+					</Nav.Link> */}
 					{/* <Nav.Link as={Link} to='/about'>
 						About
 					</Nav.Link> */}
