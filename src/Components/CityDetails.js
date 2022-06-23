@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import './CityDetails.css';
+// import './CityDetails.css';
 
 function CityDetails({ weatherDataLocation, weatherDataCurrent }) {
 	// const { city } = useParams();

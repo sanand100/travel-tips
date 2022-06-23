@@ -11,11 +11,13 @@ import Inspiration from './Components/Inspiration';
 // import axios from 'axios';
 
 function App() {
+	const [currentWeather, setCurrentWeather] = useState({});
 	const [searchOptions, setSearchOptions] = useState({
 		key: process.env.REACT_APP_WEATHER_KEY,
 		url: 'https://api.weatherapi.com/v1/current.json?key=',
 		numberOfResults: 15,
 	});
+
 	return (
 		<div>
 			<header>
@@ -32,11 +34,26 @@ function App() {
 				{/* <CityDetails /> */}
 				<Routes>
 					<Route path='/inspiration' element={<Inspiration />} />
-					{/* <Route path='/weather' element={<CityDetails />} /> */}
+					<Route
+						path='/weather'
+						element={
+							<CityDetails
+								weatherDataLocation={currentWeather.location}
+								weatherDataCurrent={currentWeather.current}
+							/>
+						}
+					/>
 					<Route
 						path='/home'
-						element={<Search searchOptions={searchOptions} />}
+						element={
+							<Search
+								searchOptions={searchOptions}
+								currentWeather={currentWeather}
+								setCurrentWeather={setCurrentWeather}
+							/>
+						}
 					/>
+
 					<Route path='*' element={<Navigate to='/home' />} />
 				</Routes>
 			</main>
