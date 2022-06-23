@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Megrim&display=swap');
+
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    flex-direction: column;
+    color: whitesmoke;
+    font-family: 'Great Vibes', cursive;
+
+}
+
+label{
+    font-size: 6em;
+    margin-bottom: 0em;
+}
+
+input{
+    margin-bottom: 0.6em;
+    width: 15em;
+    height: 2em;
+}
+
+button{
+    width: 5em;
+    font-family: 'Great Vibes', cursive;
+    font-size: 1em;
+}
