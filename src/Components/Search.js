@@ -4,7 +4,8 @@ import { useSearchParams } from 'react-router-dom';
 import CityDetails from './CityDetails';
 import SearchForm from './SearchForm';
 import Container from 'react-bootstrap/Container';
-import './HomeAndSearch.css';
+import { Routes, Route, Navigate } from 'react-router-dom';
+// import './HomeAndSearch.css';
 
 function Search({ searchOptions }) {
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -25,10 +26,9 @@ function Search({ searchOptions }) {
 
 	const getData = (searchString) => {
 		if (searchString) {
-			let cityInput = 'berlin';
-			const baseUrl =
-				'https://api.weatherapi.com/v1/current.json?key=b39f7c62b71b42a4b4732303221606&q=';
-			const url = `${baseUrl}${searchString.toLowerCase()}&aqi=no`;
+			// let cityInput = 'berlin';
+			const baseUrl = 'https://api.weatherapi.com/v1/current.json?key=';
+			const url = `${baseUrl}b39f7c62b71b42a4b4732303221606&q=${searchString.toLowerCase()}&aqi=no`;
 			fetch(url)
 				.then((res) => res.json())
 				.then((res) => setCurrentWeather(res))

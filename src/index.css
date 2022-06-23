@@ -22,6 +22,7 @@ h1 {
   margin-left: 0.2em;
   font-size: 5em;
   font-family: 'Great Vibes', cursive;
+  color: whitesmoke
 
 }
 
@@ -29,6 +30,7 @@ h4 {
   margin-top: 0px;
   margin-left: 1.2em;
   font-size: 1.2em;
+  color: whitesmoke
 }
 
 form {
@@ -53,7 +55,7 @@ input {
   height: 2em;
 }
 
-.home-btn {
+.home-submit-btn {
   width: 5em;
   font-family: 'Great Vibes', cursive;
   font-size: 1em;
@@ -61,4 +63,8 @@ input {
 .form-text-custom{
   font-size: 5em;
   color: whitesmoke;
+}
+
+Link{
+    text-decoration: none;
 }
