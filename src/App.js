@@ -9,6 +9,7 @@ import { useState } from 'react';
 import CityDetails from './Components/CityDetails';
 import Navigation from './Components/Navigation';
 import Inspiration from './Components/Inspiration';
+import axios from 'axios';
 
 function App() {
 	// const [searchOptions, setSearchOptions] = useState({
@@ -16,6 +17,7 @@ function App() {
 	// 	url: 'https://www.rijksmuseum.nl/api/en/',
 	// 	numberOfResults: 15,
 	// });
+
 	return (
 		<div>
 			<header>
@@ -32,7 +34,7 @@ function App() {
 				<Routes>
 					<Route path='/inspiration' element={<Inspiration />} />
 					<Route path='/weather' element={<CityDetails />} />
-					<Route path='/home' element={<HomeAndSearch />} />
+					<Route path='/search' element={<Search />} />
 				</Routes>
 			</main>
 		</div>

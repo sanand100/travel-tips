@@ -11,7 +11,7 @@ function Search({ searchOptions }) {
 	const requestedSearch = searchParams.get('searchString');
 	const [searchString, setSearchString] = useState(requestedSearch || '');
 	const [lastSearch, setLastSearch] = useState('');
-	const [galleryImages, setGalleryImages] = useState({});
+	const [currentWeather, setCurrentWeather] = useState({});
 	const [search, setSearch] = useState(false);
 
 	const handleChange = (event) => {
@@ -28,10 +28,11 @@ function Search({ searchOptions }) {
 			let cityInput = 'berlin';
 			const baseUrl =
 				'https://api.weatherapi.com/v1/current.json?key=b39f7c62b71b42a4b4732303221606&q=';
-			const url = `${baseUrl}${cityInput}&aqi=no`;
+			const url = `${baseUrl}${searchString.toLowerCase()}&aqi=no`;
 			fetch(url)
 				.then((res) => res.json())
-				.then((res) => setGalleryImages(res))
+				.then((res) => setCurrentWeather(res))
+				// .then((res) => console.log(res))
 				.catch(console.error);
 		}
 	};
@@ -51,26 +52,26 @@ function Search({ searchOptions }) {
 				handleSubmit={handleSubmit}
 				searchString={searchString}
 			/>
-			{search && (requestedSearch || lastSearch) && !!galleryImages.length && (
+
+			{/* {search && (requestedSearch || lastSearch) && !!currentWeather.length && (
 				<>
 					<p>
 						Showing results for{' '}
 						<span style={{ fontStyle: 'italic' }}>{lastSearch}:</span>{' '}
-					</p>
-					<CityDetails
-					// images={galleryImages}
-					// getGalleryImages={getData}
-					// searchOptions={searchOptions}
-					/>
-				</>
+					</p> */}
+			<CityDetails
+				weatherDataLocation={currentWeather.location}
+				weatherDataCurrent={currentWeather.current}
+			/>
+			{/* </>
 			)}
-			{search && !galleryImages.length && (
+			{search && !currentWeather.length && (
 				<p>
 					No results found for{' '}
 					<span style={{ fontStyle: 'italic' }}>{lastSearch}</span>. Please try
 					another search
 				</p>
-			)}
+			)} */}
 		</Container>
 	);
 }
