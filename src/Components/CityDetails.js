@@ -29,14 +29,22 @@ function CityDetails({ weatherDataLocation, weatherDataCurrent }) {
 	return (
 		<Row xs={1} md={2} lg={3} xl={4}>
 			<Col>
-				<Card bg='dark' border='light' className='custom-card'>
+				<Card bg='light' border='light' className='custom-card'>
 					<Card.Body>
-						<Card.Text className='text-muted'>
-							City: {weatherDataLocation.name}
+						<Card.Text>
+							<strong>
+								{' '}
+								{weatherDataLocation.name}, {weatherDataLocation.country}
+							</strong>
 							<br />
-							Local Time: {weatherDataLocation.localtime}
+							Local Date and Time: {weatherDataLocation.localtime}
 							<br />
-							Local Temp.(Fahrenheit):{weatherDataCurrent.temp_f}
+							<img src={weatherDataCurrent.condition.icon} />
+							{weatherDataCurrent.condition.text}
+							<br />
+							Local Temperature: {weatherDataCurrent.temp_f}&deg;F
+							<br />
+							Feels Like: {weatherDataCurrent.feelslike_f}&deg;F
 							<br />
 						</Card.Text>
 					</Card.Body>
