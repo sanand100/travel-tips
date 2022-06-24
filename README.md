@@ -1,7 +1,7 @@
 # TravelTips
 
 ## Desscription
-This web application is designed to help users plan their next vacation. The user can search for their next destination and receive information on the local weather, time, and restaurants and hotels in the area. Furthermore, the user can click on the hotel and restaurant names in the image carousel to read reviews, get the address, and menus!
+This web application is designed to help users plan their next vacation. The user can search for their next destination and receive information on the local weather, time, and restaurants and hotels in the area. Furthermore, the user can click on the hotel and restaurant names in the image carousel to read reviews, get the address, and menus! The header background changes with each new search.
 
 ###### Home Page
 ![Screen Shot 2022-06-23 at 9 05 58 PM](https://user-images.githubusercontent.com/62886630/175439614-ef463a51-e333-4c63-a42f-095915d22bb1.png)
