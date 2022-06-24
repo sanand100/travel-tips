@@ -10,7 +10,7 @@ This web application is designed to help users plan their next vacation. The use
 ![Screen Shot 2022-06-23 at 9 06 10 PM](https://user-images.githubusercontent.com/62886630/175439631-8f50f2fd-a6ac-4fc0-a5d3-4535c28238a3.png)
 
 ###### City Details Page
-![Screen Shot 2022-06-23 at 9 08 27 PM](https://user-images.githubusercontent.com/62886630/175439814-603c1df2-b78e-46f1-9145-78b279e12a89.png)
+<img width="1428" alt="Screen Shot 2022-06-24 at 2 33 01 PM" src="https://user-images.githubusercontent.com/62886630/175644574-d6ea4b46-ef14-4d27-aa08-61e977fd5b5c.png">
 
 
 ## Technologies Used
@@ -25,4 +25,5 @@ This web application is designed to help users plan their next vacation. The use
 * To work on your own version, fork and clone the repository, add your own API keys and design away!
 
 ## Contribution Guidelines
+All contributions are welcome! 
 Please reach out via [email](shraddhaanand2@gmail.com) or pull requests to contribute!
