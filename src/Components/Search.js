@@ -36,42 +36,6 @@ function Search({
 		navigate('/cityDetails');
 	};
 
-	// const getData = (searchString) => {
-	// 	if (searchString) {
-	// 		// let cityInput = 'berlin';
-	// 		// const baseUrl = 'https://api.weatherapi.com/v1/current.json?key=';
-	// const url = `${searchOptions.url}${
-	// 	searchOptions.key
-	// }&q=${searchString.toLowerCase()}&aqi=no`;
-	// 		fetch(url)
-	// 			.then((res) => res.json())
-	// 			.then((res) => setCurrentWeather(res))
-	// 			// .then((res) => console.log(res))
-	// 			.catch(console.error);
-	// 	}
-	// };
-
-	// const getYelpData = (searchString) => {
-	// 	if (searchString) {
-	// let url = `https://seir-cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=hotel&location=${searchString.toLowerCase()}`;
-	// 		fetch(url, {
-	// 			method: 'GET',
-	// headers: {
-	// 	Authorization: `Bearer ${process.env.REACT_APP_YELP_KEY}`,
-	// },
-	// 		})
-	// 			.then((res) => res.json())
-	// 			.then((data) => {
-	// 				console.log('Success!', data.businesses);
-	// 				// setCurrentYelpData(data.businesses);
-	// 			})
-	// 			.catch((err) => {
-	// 				console.log('oh no, something is not right');
-	// 			});
-	// 		console.log('hello is this working');
-	// 	}
-	// };
-
 	const getData = (searchString) => {
 		if (searchString) {
 			Promise.all([
@@ -126,33 +90,6 @@ function Search({
 				});
 		}
 	};
-
-	// const searchRequest = {
-	// 	// term: 'food',
-	// 	location: searchString,
-	// };
-	// const getYelpData = (searchString) => {
-	// 	if (searchString) {
-	// 		const client = yelp.client(
-	// 			'AYTwXFiGVKTQ7n0KPYYAs74tm4TA3X5_inWl9CvlDRM6l56logB07kmUiIYEE21hzrPIebl8Ri-jk82xGShhvbC9lqLGNw2ljvmdbkV1JEJo6HtwEk0bdJfsk2OrYnYx'
-	// 		);
-
-	// 		client
-	// 			.search({
-	// 				location: searchString,
-	// 			})
-	// 			.then((response) => {
-	// 				const firstResult = response.jsonBody.businesses[0];
-	// 				const prettyJson = JSON.stringify(firstResult, null, 4);
-	// 				console.log(prettyJson);
-	// 				setCurrentYelpData(prettyJSON);
-	// 			})
-	// 			.catch((e) => {
-	// 				console.log(e);
-	// 			});
-	// 	}
-	// };
-
 	useEffect(() => {
 		if (requestedSearch) {
 			getData(requestedSearch);
@@ -168,26 +105,6 @@ function Search({
 				handleSubmit={handleSubmit}
 				searchString={searchString}
 			/>
-
-			{/* {search && (requestedSearch || lastSearch) && !!currentWeather.length && (
-				<>
-					<p>
-						Showing results for{' '}
-						<span style={{ fontStyle: 'italic' }}>{lastSearch}:</span>{' '}
-					</p> */}
-			{/* <CityDetails
-				weatherDataLocation={currentWeather.location}
-				weatherDataCurrent={currentWeather.current}
-			/> */}
-			{/* </>
-			)}
-			{search && !currentWeather.length && (
-				<p>
-					No results found for{' '}
-					<span style={{ fontStyle: 'italic' }}>{lastSearch}</span>. Please try
-					another search
-				</p>
-			)} */}
 		</Container>
 	);
 }
