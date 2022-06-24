@@ -1,4 +1,21 @@
-.cityDetailsdiv{
-    background-color: red;
-    height: 60vh;
+.cityDetailsContainerDiv{
+    /* display: flex; */
+    margin: 0 auto;
+    padding: 5px;
+}
+
+
+.custom-carousel{
+    margin-top: 0;
+}
+
+.locationH4{
+    margin-top: 0;
+    margin-bottom: 1.5em;
+    margin-left: 0;
+    border-bottom: 1px solid white;
+}
+
+.locationH2{
+    margin-bottom: 0;
 }
