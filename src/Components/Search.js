@@ -14,6 +14,8 @@ function Search({
 	setCurrentYelpHotelData,
 	setCurrentYelpFoodData,
 	setBackgroundImage,
+	// setCovidInfo,
+	setNewsData,
 }) {
 	let navigate = useNavigate();
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -97,6 +99,9 @@ function Search({
 				fetch(
 					`https://api.unsplash.com/photos/random?client_id=${process.env.REACT_APP_UNSPLASHAPI_KEY}&query=${searchString}&orientation=landscape`
 				),
+				fetch(
+					`https://newsdata.io/api/1/news?apikey=pub_8642f538a869bdfc6de9d36a086cbc8a4286&q=${searchString} `
+				),
 			])
 				.then(function (responses) {
 					return Promise.all(
@@ -113,6 +118,7 @@ function Search({
 					setCurrentYelpHotelData(data[1]);
 					setCurrentYelpFoodData(data[2]);
 					setBackgroundImage(data[3].urls.regular);
+					setNewsData(data[4]);
 				})
 				.catch(function (error) {
 					// if there's an error, log it

@@ -16,6 +16,8 @@ function App() {
 	const [backgroundImage, setBackgroundImage] = useState(
 		'../assets/cityNightSkyline.jpeg'
 	);
+	// const [covidInfo, setCovidInfo] = useState({});
+	const [newsData, setNewsData] = useState({});
 	const [searchOptions, setSearchOptions] = useState({
 		key: process.env.REACT_APP_WEATHER_KEY,
 		url: 'https://api.weatherapi.com/v1/current.json?key=',
@@ -46,6 +48,8 @@ function App() {
 								weatherDataCurrent={currentWeather.current}
 								currentYelpHotelData={currentYelpHotelData}
 								currentYelpFoodData={currentYelpFoodData}
+								// covidInfo={covidInfo}
+								newsData={newsData}
 							/>
 						}
 					/>
@@ -62,7 +66,10 @@ function App() {
 								setCurrentYelpFoodData={setCurrentYelpFoodData}
 								backgroundImage={backgroundImage}
 								setBackgroundImage={setBackgroundImage}
-								// backgroundImage={back}
+								// covidInfo={covidInfo}
+								// setCovidInfo={setCovidInfo}
+								newsData={newsData}
+								setNewsData={setNewsData}
 							/>
 						}
 					/>
