@@ -33,29 +33,33 @@ export default function Inspiration() {
 		// 		</Carousel>
 		// 	</div>
 		// );
-		<Carousel style={{ minHeight: '70vh' }}>
-			{data.map((item) => {
-				return (
-					<Carousel.Item key={item.id} style={{ maxHeight: '70vh' }}>
-						<img
-							className='d-block w-100'
-							style={{
-								height: '90vh',
-								width: '100%',
-								objectFit: 'cover',
-								overflow: 'hidden',
-							}}
-							src={item.image_url}
-							alt={item.name}
-						/>
-						<Carousel.Caption>
-							<p>
-								{item.name} in {item.location.city}
-							</p>
-						</Carousel.Caption>
-					</Carousel.Item>
-				);
-			})}
-		</Carousel>
+		<div class='carousel-item active img-fluid'>
+			<Carousel style={{ minHeight: '40vh' }}>
+				{data.map((item) => {
+					return (
+						<Carousel.Item key={item.id} style={{ maxHeight: '70vh' }}>
+							<img
+								width={50}
+								height={50}
+								className='d-block w-100'
+								style={{
+									height: '40vh',
+									// width: '75%',
+									objectFit: 'contain',
+									// overflow: 'hidden',
+								}}
+								src={item.image_url}
+								alt={item.name}
+							/>
+							<Carousel.Caption>
+								<p>
+									{item.name} in {item.location.city}
+								</p>
+							</Carousel.Caption>
+						</Carousel.Item>
+					);
+				})}
+			</Carousel>
+		</div>
 	);
 }
