@@ -93,10 +93,10 @@ function CityDetails({
 								</div>
 							)}
 							{!newsData.results && (
-								<div className='weathercard'>
+								<div className='newscard'>
 									<h4 style={{ color: 'white' }}>Some hotels in the area:</h4>
-									<h4 style={{ color: 'white' }}>
-										Yelp does not support this country!{' '}
+									<h4 style={{ color: 'gray' }}>
+										NewsData API does not support this country!{' '}
 									</h4>
 								</div>
 							)}
@@ -138,7 +138,7 @@ function CityDetails({
 							{!currentYelpHotelData.businesses && (
 								<div className='hotelcard'>
 									<h4 style={{ color: 'white' }}>Some hotels in the area:</h4>
-									<h4 style={{ color: 'white' }}>
+									<h4 style={{ color: 'gray' }}>
 										Yelp does not support this country!{' '}
 									</h4>
 								</div>
@@ -183,10 +183,10 @@ function CityDetails({
 							)}
 							{!currentYelpFoodData.businesses && (
 								<div className='foodcard'>
-									<h2 style={{ color: 'white' }}>
-										Some restaurants in the area:
-									</h2>
 									<h4 style={{ color: 'white' }}>
+										Some restaurants in the area:
+									</h4>
+									<h4 style={{ color: 'gray' }}>
 										Yelp does not support this country!{' '}
 									</h4>
 								</div>
