@@ -13,6 +13,7 @@ function Search({
 	setCurrentWeather,
 	setCurrentYelpHotelData,
 	setCurrentYelpFoodData,
+	setBackgroundImage,
 }) {
 	let navigate = useNavigate();
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -93,6 +94,9 @@ function Search({
 						},
 					}
 				),
+				fetch(
+					`https://api.unsplash.com/photos/random?client_id=${process.env.REACT_APP_UNSPLASHAPI_KEY}&query=${searchString}&orientation=landscape`
+				),
 			])
 				.then(function (responses) {
 					return Promise.all(
@@ -108,6 +112,7 @@ function Search({
 					setCurrentWeather(data[0]);
 					setCurrentYelpHotelData(data[1]);
 					setCurrentYelpFoodData(data[2]);
+					setBackgroundImage(data[3].urls.regular);
 				})
 				.catch(function (error) {
 					// if there's an error, log it
@@ -145,7 +150,6 @@ function Search({
 	useEffect(() => {
 		if (requestedSearch) {
 			getData(requestedSearch);
-			// getYelpData(requestedSearch);
 		} else {
 			setSearchParams({});
 		}

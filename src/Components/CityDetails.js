@@ -34,24 +34,44 @@ function CityDetails({
 	if (!weatherDataLocation) return null;
 	return (
 		<div className='cityDetailsdiv'>
+			<h2 style={{ color: 'whitesmoke' }}>{weatherDataLocation.name}</h2>
+			{weatherDataLocation.region ? (
+				<h4 style={{ color: 'whitesmoke' }}>
+					{weatherDataLocation.region}, {weatherDataLocation.country}
+				</h4>
+			) : (
+				<h4 style={{ color: 'whitesmoke' }}>{weatherDataLocation.country}</h4>
+			)}
 			<Row xs={1} md={2} lg={3} xl={4}>
 				<Col>
 					<Card bg='light' border='light' className='custom-card'>
 						<Card.Body>
 							<Card.Text>
-								<strong>
-									{' '}
-									{weatherDataLocation.name}, {weatherDataLocation.country}
-								</strong>
-								<br />
-								Local Date and Time: {weatherDataLocation.localtime}
-								<br />
 								<img src={weatherDataCurrent.condition.icon} />
 								{weatherDataCurrent.condition.text}
+								<br />
 								<br />
 								Local Temperature: {weatherDataCurrent.temp_f}&deg;F
 								<br />
 								Feels Like: {weatherDataCurrent.feelslike_f}&deg;F
+								<br />
+								Local Date and Time: {weatherDataLocation.localtime}
+							</Card.Text>
+						</Card.Body>
+					</Card>
+					<br />
+					<Card bg='light' border='light' className='custom-card'>
+						<Card.Body>
+							<Card.Text>
+								<img src={weatherDataCurrent.condition.icon} />
+								{weatherDataCurrent.condition.text}
+								<br />
+								<br />
+								Local Temperature: {weatherDataCurrent.temp_f}&deg;F
+								<br />
+								Feels Like: {weatherDataCurrent.feelslike_f}&deg;F
+								<br />
+								Local Date and Time: {weatherDataLocation.localtime}
 							</Card.Text>
 						</Card.Body>
 					</Card>
