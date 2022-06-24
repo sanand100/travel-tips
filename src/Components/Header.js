@@ -3,6 +3,7 @@ import './Header.css';
 import { Link } from 'react-router-dom';
 function Header(props) {
 	return (
+		// <header style-{{backgroundImage: url('')}}>
 		<header>
 			<Link to='/home' style={{ textDecoration: 'none' }}>
 				<h1>TravelTips</h1>

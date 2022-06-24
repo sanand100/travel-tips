@@ -3,10 +3,16 @@ import { useState, useEffect, useParams } from 'react';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
 // import './CityDetails.css';
 
-function CityDetails({ weatherDataLocation, weatherDataCurrent }) {
+function CityDetails({
+	weatherDataLocation,
+	weatherDataCurrent,
+	currentYelpHotelData,
+	currentYelpFoodData,
+}) {
 	// const { city } = useParams();
 	// const [weatherData, setWeatherData] = useState({});
 	// const getWeatherData = () => {
@@ -27,39 +33,108 @@ function CityDetails({ weatherDataLocation, weatherDataCurrent }) {
 	// console.log(weatherData.location.name);
 	if (!weatherDataLocation) return null;
 	return (
-		<Row xs={1} md={2} lg={3} xl={4}>
-			<Col>
-				<Card bg='light' border='light' className='custom-card'>
-					<Card.Body>
-						<Card.Text>
-							<strong>
-								{' '}
-								{weatherDataLocation.name}, {weatherDataLocation.country}
-							</strong>
-							<br />
-							Local Date and Time: {weatherDataLocation.localtime}
-							<br />
-							<img src={weatherDataCurrent.condition.icon} />
-							{weatherDataCurrent.condition.text}
-							<br />
-							Local Temperature: {weatherDataCurrent.temp_f}&deg;F
-							<br />
-							Feels Like: {weatherDataCurrent.feelslike_f}&deg;F
-							<br />
-						</Card.Text>
-					</Card.Body>
-					{/* <Card.Footer> */}
-					{/* <div>
-						<Button variant='outline-light' className='btn-sm'>
-							{' '}
-							More Information
-						</Button>
-					</div> */}
-					{/* </Card.Footer> */}
-					{/* </Container> */}
-				</Card>
-			</Col>
-		</Row>
+		<div className='cityDetailsdiv'>
+			<Row xs={1} md={2} lg={3} xl={4}>
+				<Col>
+					<Card bg='light' border='light' className='custom-card'>
+						<Card.Body>
+							<Card.Text>
+								<strong>
+									{' '}
+									{weatherDataLocation.name}, {weatherDataLocation.country}
+								</strong>
+								<br />
+								Local Date and Time: {weatherDataLocation.localtime}
+								<br />
+								<img src={weatherDataCurrent.condition.icon} />
+								{weatherDataCurrent.condition.text}
+								<br />
+								Local Temperature: {weatherDataCurrent.temp_f}&deg;F
+								<br />
+								Feels Like: {weatherDataCurrent.feelslike_f}&deg;F
+							</Card.Text>
+						</Card.Body>
+					</Card>
+				</Col>
+				<Col>
+					{currentYelpHotelData.businesses && (
+						<div class='carousel-item active img-fluid'>
+							<Carousel>
+								{currentYelpHotelData.businesses.map((item) => {
+									return (
+										<Carousel.Item>
+											<img
+												width={50}
+												height={50}
+												className='d-block w-100'
+												style={{
+													height: '40vh',
+													// width: '75%',
+													objectFit: 'contain',
+													// overflow: 'hidden',
+												}}
+												src={item.image_url}
+												alt={item.name}
+											/>
+											<Carousel.Caption>
+												<a
+													className='hotel-img-link'
+													href={item.url}
+													target='_blank'>
+													{item.name}
+												</a>
+											</Carousel.Caption>
+										</Carousel.Item>
+									);
+								})}
+							</Carousel>
+						</div>
+					)}
+					{!currentYelpHotelData.businesses && (
+						<h2>Yelp does not support this country! </h2>
+					)}
+				</Col>
+				<Col>
+					{currentYelpFoodData.businesses && (
+						<div class='carousel-item active img-fluid'>
+							<Carousel>
+								{currentYelpFoodData.businesses.map((item) => {
+									return (
+										<Carousel.Item>
+											<img
+												width={50}
+												height={50}
+												className='d-block w-100'
+												style={{
+													height: '40vh',
+													// width: '75%',
+													objectFit: 'contain',
+													// overflow: 'hidden',
+												}}
+												src={item.image_url}
+												alt={item.name}
+											/>
+											<Carousel.Caption>
+												<a
+													className='hotel-img-link'
+													href={item.url}
+													target='_blank'>
+													{item.name}
+												</a>
+											</Carousel.Caption>
+										</Carousel.Item>
+									);
+								})}
+							</Carousel>
+						</div>
+					)}
+
+					{!currentYelpFoodData.businesses && (
+						<h2>Yelp does not support this country! </h2>
+					)}
+				</Col>
+			</Row>
+		</div>
 	);
 }
 

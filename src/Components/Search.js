@@ -3,17 +3,25 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import SearchForm from './SearchForm';
 import Container from 'react-bootstrap/Container';
+// import { useBusinessSearch } from '../hooks/yelp-api/useBusinessSearch';
 
 // import './HomeAndSearch.css';
 
-function Search({ searchOptions, currentWeather, setCurrentWeather }) {
+function Search({
+	searchOptions,
+	currentWeather,
+	setCurrentWeather,
+	setCurrentYelpHotelData,
+	setCurrentYelpFoodData,
+}) {
 	let navigate = useNavigate();
 	const [searchParams, setSearchParams] = useSearchParams();
 	const requestedSearch = searchParams.get('searchString');
 	const [searchString, setSearchString] = useState(requestedSearch || '');
 	const [lastSearch, setLastSearch] = useState('');
-	// const [currentWeather, setCurrentWeather] = useState({});
 	const [search, setSearch] = useState(false);
+	// const [businesses, amountResults, searchParams, setSearchParams] =
+	// useBusinessSearch('hotel', searchString);
 
 	const handleChange = (event) => {
 		setSearchString(event.target.value);
@@ -25,29 +33,124 @@ function Search({ searchOptions, currentWeather, setCurrentWeather }) {
 		navigate('/weather');
 	};
 
+	// const getData = (searchString) => {
+	// 	if (searchString) {
+	// 		// let cityInput = 'berlin';
+	// 		// const baseUrl = 'https://api.weatherapi.com/v1/current.json?key=';
+	// const url = `${searchOptions.url}${
+	// 	searchOptions.key
+	// }&q=${searchString.toLowerCase()}&aqi=no`;
+	// 		fetch(url)
+	// 			.then((res) => res.json())
+	// 			.then((res) => setCurrentWeather(res))
+	// 			// .then((res) => console.log(res))
+	// 			.catch(console.error);
+	// 	}
+	// };
+
+	// const getYelpData = (searchString) => {
+	// 	if (searchString) {
+	// let url = `https://seir-cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=hotel&location=${searchString.toLowerCase()}`;
+	// 		fetch(url, {
+	// 			method: 'GET',
+	// headers: {
+	// 	Authorization: `Bearer ${process.env.REACT_APP_YELP_KEY}`,
+	// },
+	// 		})
+	// 			.then((res) => res.json())
+	// 			.then((data) => {
+	// 				console.log('Success!', data.businesses);
+	// 				// setCurrentYelpData(data.businesses);
+	// 			})
+	// 			.catch((err) => {
+	// 				console.log('oh no, something is not right');
+	// 			});
+	// 		console.log('hello is this working');
+	// 	}
+	// };
+
 	const getData = (searchString) => {
 		if (searchString) {
-			// let cityInput = 'berlin';
-			// const baseUrl = 'https://api.weatherapi.com/v1/current.json?key=';
-			const url = `${searchOptions.url}${
-				searchOptions.key
-			}&q=${searchString.toLowerCase()}&aqi=no`;
-			fetch(url)
-				.then((res) => res.json())
-				.then((res) => setCurrentWeather(res))
-				// .then((res) => console.log(res))
-				.catch(console.error);
+			Promise.all([
+				fetch(
+					`${searchOptions.url}${
+						searchOptions.key
+					}&q=${searchString.toLowerCase()}&aqi=no`
+				),
+				fetch(
+					`https://seir-cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=hotel&location=${searchString.toLowerCase()}`,
+					{
+						headers: {
+							Authorization: `Bearer ${process.env.REACT_APP_YELP_KEY}`,
+						},
+					}
+				),
+				fetch(
+					`https://seir-cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=restaurants&location=${searchString.toLowerCase()}`,
+					{
+						headers: {
+							Authorization: `Bearer ${process.env.REACT_APP_YELP_KEY}`,
+						},
+					}
+				),
+			])
+				.then(function (responses) {
+					return Promise.all(
+						responses.map(function (response) {
+							return response.json();
+						})
+					);
+				})
+				.then(function (data) {
+					// Log the data to the console
+					// You would do something with both sets of data here
+					console.log(data);
+					setCurrentWeather(data[0]);
+					setCurrentYelpHotelData(data[1]);
+					setCurrentYelpFoodData(data[2]);
+				})
+				.catch(function (error) {
+					// if there's an error, log it
+					console.log(error);
+				});
 		}
 	};
+
+	// const searchRequest = {
+	// 	// term: 'food',
+	// 	location: searchString,
+	// };
+	// const getYelpData = (searchString) => {
+	// 	if (searchString) {
+	// 		const client = yelp.client(
+	// 			'AYTwXFiGVKTQ7n0KPYYAs74tm4TA3X5_inWl9CvlDRM6l56logB07kmUiIYEE21hzrPIebl8Ri-jk82xGShhvbC9lqLGNw2ljvmdbkV1JEJo6HtwEk0bdJfsk2OrYnYx'
+	// 		);
+
+	// 		client
+	// 			.search({
+	// 				location: searchString,
+	// 			})
+	// 			.then((response) => {
+	// 				const firstResult = response.jsonBody.businesses[0];
+	// 				const prettyJson = JSON.stringify(firstResult, null, 4);
+	// 				console.log(prettyJson);
+	// 				setCurrentYelpData(prettyJSON);
+	// 			})
+	// 			.catch((e) => {
+	// 				console.log(e);
+	// 			});
+	// 	}
+	// };
+
 	useEffect(() => {
 		if (requestedSearch) {
 			getData(requestedSearch);
+			// getYelpData(requestedSearch);
 		} else {
 			setSearchParams({});
 		}
 		// eslint-disable-next-line
 	}, [requestedSearch]);
-
 	return (
 		<Container>
 			<SearchForm
