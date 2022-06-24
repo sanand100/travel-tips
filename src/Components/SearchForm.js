@@ -14,8 +14,9 @@ const SearchForm = ({ handleSubmit, handleChange, searchString }) => {
 			<Form.Group>
 				<Form.Text className='form-text-custom'>Where to?</Form.Text>
 				<Form.Control
+					style={{ fontFamily: 'trebuchet' }}
 					size='lg'
-					placeholder='Search for a city or country'
+					placeholder='Search for a city'
 					type='text'
 					name='searchString'
 					required

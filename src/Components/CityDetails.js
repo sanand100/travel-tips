@@ -35,42 +35,46 @@ function CityDetails({
 	// console.log(weatherData.location.name);
 	if (!weatherDataLocation) return null;
 	return (
-		<div className='cityDetailsContainerDiv'>
-			<div className='cityDetailsdiv'>
-				<h2 style={{ color: 'whitesmoke' }} className='locationH2'>
-					{weatherDataLocation.name}
-				</h2>
-				{weatherDataLocation.region ? (
-					<h4 style={{ color: 'whitesmoke' }} className='locationH4'>
-						{weatherDataLocation.region}, {weatherDataLocation.country}
-					</h4>
-				) : (
-					<h4 style={{ color: 'whitesmoke' }} className='locationH4'>
-						{weatherDataLocation.country}
-					</h4>
-				)}
+		<div className='wholediv'>
+			<h2 style={{ color: 'whitesmoke' }} className='locationH2'>
+				{weatherDataLocation.name}
+			</h2>
+			{weatherDataLocation.region ? (
+				<h4 style={{ color: 'whitesmoke' }} className='locationH4'>
+					{weatherDataLocation.region}, {weatherDataLocation.country}
+				</h4>
+			) : (
+				<h4 style={{ color: 'whitesmoke' }} className='locationH4'>
+					{weatherDataLocation.country}
+				</h4>
+			)}
+			<div className='cityDetailsContainerDiv'>
 				<div className='cityDetailsCards'>
 					<Row xs={1} md={2} lg={3} xl={4}>
 						<Col>
-							<Card bg='light' border='light' className='custom-card'>
-								<Card.Title>The current weather</Card.Title>
-								<Card.Body>
-									<Card.Text>
-										<img src={weatherDataCurrent.condition.icon} />
-										{weatherDataCurrent.condition.text}
-										<br />
-										<br />
-										Local Temperature: {weatherDataCurrent.temp_f}&deg;F
-										<br />
-										Feels Like: {weatherDataCurrent.feelslike_f}&deg;F
-										<br />
-										Local Date and Time: {weatherDataLocation.localtime}
-									</Card.Text>
-								</Card.Body>
-							</Card>
-							<br />
+							<div className='weathercard'>
+								<Card bg='light' border='light' className='custom-card'>
+									<Card.Title>The current weather</Card.Title>
+									<Card.Body>
+										<Card.Text>
+											<img src={weatherDataCurrent.condition.icon} />
+											{weatherDataCurrent.condition.text}
+											<br />
+											<br />
+											Local Temperature: {weatherDataCurrent.temp_f}&deg;F
+											<br />
+											Feels Like: {weatherDataCurrent.feelslike_f}&deg;F
+											<br />
+											Local Date and Time: {weatherDataLocation.localtime}
+										</Card.Text>
+									</Card.Body>
+								</Card>
+							</div>
+						</Col>
+						<br />
+						<Col>
 							{newsData.results && (
-								<div className='carousel-item active img-fluid'>
+								<div className='carousel-item active img-fluid newscard'>
 									<h4 style={{ color: 'white' }}>
 										Current news from the area:
 									</h4>
@@ -80,7 +84,7 @@ function CityDetails({
 											.filter((item) => item.image_url !== null)
 											.map((item) => {
 												return (
-													<Carousel.Item>
+													<Carousel.Item key={item.source_id}>
 														<img
 															className='d-block w-100'
 															style={{
@@ -110,12 +114,12 @@ function CityDetails({
 						<br />
 						<Col>
 							{currentYelpHotelData.businesses && (
-								<div className='carousel-item active img-fluid'>
+								<div className='carousel-item active img-fluid hotelcard'>
 									<h4 style={{ color: 'white' }}>Some hotels in the area:</h4>
 									<Carousel className='custom-carousel'>
 										{currentYelpHotelData.businesses.map((item) => {
 											return (
-												<Carousel.Item>
+												<Carousel.Item key={item.id}>
 													<img
 														className='d-block w-100'
 														style={{
@@ -142,7 +146,7 @@ function CityDetails({
 								</div>
 							)}
 							{!currentYelpHotelData.businesses && (
-								<div>
+								<div className='hotelcard'>
 									<h4 style={{ color: 'white' }}>Some hotels in the area:</h4>
 									<h2>Yelp does not support this country! </h2>
 								</div>
@@ -150,14 +154,14 @@ function CityDetails({
 						</Col>
 						<Col>
 							{currentYelpFoodData.businesses && (
-								<div className='carousel-item active img-fluid'>
+								<div className='carousel-item active img-fluid foodcard'>
 									<h4 style={{ color: 'white' }}>
 										Some restaurants in the area:
 									</h4>
 									<Carousel className='custom-carousel'>
 										{currentYelpFoodData.businesses.map((item) => {
 											return (
-												<Carousel.Item>
+												<Carousel.Item key={item.id}>
 													<img
 														width={50}
 														height={50}
@@ -186,7 +190,7 @@ function CityDetails({
 								</div>
 							)}
 							{!currentYelpFoodData.businesses && (
-								<div>
+								<div className='foodcard'>
 									<h2 style={{ color: 'white' }}>
 										Some restaurants in the area:
 									</h2>
