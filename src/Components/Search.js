@@ -33,7 +33,7 @@ function Search({
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		getData(searchString);
-		navigate('/weather');
+		navigate('/cityDetails');
 	};
 
 	// const getData = (searchString) => {

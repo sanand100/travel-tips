@@ -41,7 +41,7 @@ function App() {
 				<Routes>
 					<Route path='/inspiration' element={<Inspiration />} />
 					<Route
-						path='/weather'
+						path='/cityDetails'
 						element={
 							<CityDetails
 								weatherDataLocation={currentWeather.location}
