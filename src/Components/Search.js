@@ -112,7 +112,7 @@ function Search({
 					setCurrentWeather(data[0]);
 					setCurrentYelpHotelData(data[1]);
 					setCurrentYelpFoodData(data[2]);
-					setBackgroundImage(data[3]);
+					setBackgroundImage(data[3].urls.regular);
 				})
 				.catch(function (error) {
 					// if there's an error, log it
