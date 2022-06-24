@@ -15,24 +15,6 @@ function CityDetails({
 	// covidInfo,
 	newsData,
 }) {
-	// const { city } = useParams();
-	// const [weatherData, setWeatherData] = useState({});
-	// const getWeatherData = () => {
-	// 	let cityInput = 'boston';
-	// 	const baseUrl =
-	// 		'https://api.weatherapi.com/v1/current.json?key=b39f7c62b71b42a4b4732303221606&q=';
-	// 	const url = `${baseUrl}${cityInput}&aqi=no`;
-	// 	fetch(url)
-	// 		.then((res) => res.json())
-	// 		.then((res) => setWeatherData(res))
-	// 		.catch(console.error);
-	// };
-
-	// useEffect(() => {
-	// 	getWeatherData();
-	// }, []);
-
-	// console.log(weatherData.location.name);
 	if (!weatherDataLocation) return null;
 	return (
 		<div className='wholediv'>
@@ -110,6 +92,14 @@ function CityDetails({
 									</Carousel>
 								</div>
 							)}
+							{!newsData.results && (
+								<div className='weathercard'>
+									<h4 style={{ color: 'white' }}>Some hotels in the area:</h4>
+									<h4 style={{ color: 'white' }}>
+										Yelp does not support this country!{' '}
+									</h4>
+								</div>
+							)}
 						</Col>
 						<br />
 						<Col>
@@ -148,7 +138,9 @@ function CityDetails({
 							{!currentYelpHotelData.businesses && (
 								<div className='hotelcard'>
 									<h4 style={{ color: 'white' }}>Some hotels in the area:</h4>
-									<h2>Yelp does not support this country! </h2>
+									<h4 style={{ color: 'white' }}>
+										Yelp does not support this country!{' '}
+									</h4>
 								</div>
 							)}
 						</Col>
@@ -194,7 +186,9 @@ function CityDetails({
 									<h2 style={{ color: 'white' }}>
 										Some restaurants in the area:
 									</h2>
-									<h2>Yelp does not support this country! </h2>
+									<h4 style={{ color: 'white' }}>
+										Yelp does not support this country!{' '}
+									</h4>
 								</div>
 							)}
 						</Col>
