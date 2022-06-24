@@ -68,3 +68,13 @@ input {
 Link{
     text-decoration: none;
 }
+
+.hotel-img-link{
+  text-decoration: none;
+  color: white
+}
+
+.hotel-img-link::hover{
+  cursor: pointer;
+  color: red
+}

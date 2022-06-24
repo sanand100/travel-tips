@@ -11,7 +11,8 @@ import Inspiration from './Components/Inspiration';
 
 function App() {
 	const [currentWeather, setCurrentWeather] = useState({});
-	const [currentYelpData, setCurrentYelpData] = useState([]);
+	const [currentYelpHotelData, setCurrentYelpHotelData] = useState([]);
+	const [currentYelpFoodData, setCurrentYelpFoodData] = useState([]);
 	// const [backgroundImage, setBackgroundImage] = useState('');
 	const [searchOptions, setSearchOptions] = useState({
 		key: process.env.REACT_APP_WEATHER_KEY,
@@ -41,7 +42,8 @@ function App() {
 							<CityDetails
 								weatherDataLocation={currentWeather.location}
 								weatherDataCurrent={currentWeather.current}
-								currentYelpData={currentYelpData}
+								currentYelpHotelData={currentYelpHotelData}
+								currentYelpFoodData={currentYelpFoodData}
 							/>
 						}
 					/>
@@ -52,8 +54,10 @@ function App() {
 								searchOptions={searchOptions}
 								currentWeather={currentWeather}
 								setCurrentWeather={setCurrentWeather}
-								currentYelpData={currentYelpData}
-								setCurrentYelpData={setCurrentYelpData}
+								currentYelpHotelData={currentYelpHotelData}
+								setCurrentYelpHotelData={setCurrentYelpHotelData}
+								currentYelpFoodData={currentYelpFoodData}
+								setCurrentYelpFoodData={setCurrentYelpFoodData}
 								// backgroundImage={back}
 							/>
 						}

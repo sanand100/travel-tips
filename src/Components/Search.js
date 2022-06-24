@@ -11,7 +11,8 @@ function Search({
 	searchOptions,
 	currentWeather,
 	setCurrentWeather,
-	setCurrentYelpData,
+	setCurrentYelpHotelData,
+	setCurrentYelpFoodData,
 }) {
 	let navigate = useNavigate();
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -84,6 +85,14 @@ function Search({
 						},
 					}
 				),
+				fetch(
+					`https://seir-cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=restaurants&location=${searchString.toLowerCase()}`,
+					{
+						headers: {
+							Authorization: `Bearer ${process.env.REACT_APP_YELP_KEY}`,
+						},
+					}
+				),
 			])
 				.then(function (responses) {
 					return Promise.all(
@@ -97,7 +106,8 @@ function Search({
 					// You would do something with both sets of data here
 					console.log(data);
 					setCurrentWeather(data[0]);
-					setCurrentYelpData(data[1]);
+					setCurrentYelpHotelData(data[1]);
+					setCurrentYelpFoodData(data[2]);
 				})
 				.catch(function (error) {
 					// if there's an error, log it

@@ -10,7 +10,8 @@ import Button from 'react-bootstrap/Button';
 function CityDetails({
 	weatherDataLocation,
 	weatherDataCurrent,
-	currentYelpData,
+	currentYelpHotelData,
+	currentYelpFoodData,
 }) {
 	// const { city } = useParams();
 	// const [weatherData, setWeatherData] = useState({});
@@ -33,62 +34,106 @@ function CityDetails({
 	if (!weatherDataLocation) return null;
 	return (
 		<div className='cityDetailsdiv'>
-			{/* <Row xs={1} md={2} lg={3} xl={4}>
-				<Col> */}
-			<Card bg='light' border='light' className='custom-card'>
-				<Card.Body>
-					<Card.Text>
-						<strong>
-							{' '}
-							{weatherDataLocation.name}, {weatherDataLocation.country}
-						</strong>
-						<br />
-						Local Date and Time: {weatherDataLocation.localtime}
-						<br />
-						<img src={weatherDataCurrent.condition.icon} />
-						{weatherDataCurrent.condition.text}
-						<br />
-						Local Temperature: {weatherDataCurrent.temp_f}&deg;F
-						<br />
-						Feels Like: {weatherDataCurrent.feelslike_f}&deg;F
-					</Card.Text>
-				</Card.Body>
-			</Card>
+			<Row xs={1} md={2} lg={3} xl={4}>
+				<Col>
+					<Card bg='light' border='light' className='custom-card'>
+						<Card.Body>
+							<Card.Text>
+								<strong>
+									{' '}
+									{weatherDataLocation.name}, {weatherDataLocation.country}
+								</strong>
+								<br />
+								Local Date and Time: {weatherDataLocation.localtime}
+								<br />
+								<img src={weatherDataCurrent.condition.icon} />
+								{weatherDataCurrent.condition.text}
+								<br />
+								Local Temperature: {weatherDataCurrent.temp_f}&deg;F
+								<br />
+								Feels Like: {weatherDataCurrent.feelslike_f}&deg;F
+							</Card.Text>
+						</Card.Body>
+					</Card>
+				</Col>
+				<Col>
+					{currentYelpHotelData.businesses && (
+						<div class='carousel-item active img-fluid'>
+							<Carousel>
+								{currentYelpHotelData.businesses.map((item) => {
+									return (
+										<Carousel.Item>
+											<img
+												width={50}
+												height={50}
+												className='d-block w-100'
+												style={{
+													height: '40vh',
+													// width: '75%',
+													objectFit: 'contain',
+													// overflow: 'hidden',
+												}}
+												src={item.image_url}
+												alt={item.name}
+											/>
+											<Carousel.Caption>
+												<a
+													className='hotel-img-link'
+													href={item.url}
+													target='_blank'>
+													{item.name}
+												</a>
+											</Carousel.Caption>
+										</Carousel.Item>
+									);
+								})}
+							</Carousel>
+						</div>
+					)}
+					{!currentYelpHotelData.businesses && (
+						<h2>Yelp does not support this country! </h2>
+					)}
+				</Col>
+				<Col>
+					{currentYelpFoodData.businesses && (
+						<div class='carousel-item active img-fluid'>
+							<Carousel>
+								{currentYelpFoodData.businesses.map((item) => {
+									return (
+										<Carousel.Item>
+											<img
+												width={50}
+												height={50}
+												className='d-block w-100'
+												style={{
+													height: '40vh',
+													// width: '75%',
+													objectFit: 'contain',
+													// overflow: 'hidden',
+												}}
+												src={item.image_url}
+												alt={item.name}
+											/>
+											<Carousel.Caption>
+												<a
+													className='hotel-img-link'
+													href={item.url}
+													target='_blank'>
+													{item.name}
+												</a>
+											</Carousel.Caption>
+										</Carousel.Item>
+									);
+								})}
+							</Carousel>
+						</div>
+					)}
 
-			{currentYelpData.businesses && (
-				<div class='carousel-item active img-fluid'>
-					<Carousel>
-						{currentYelpData.businesses.map((item) => {
-							return (
-								<Carousel.Item>
-									<img
-										width={50}
-										height={50}
-										className='d-block w-100'
-										style={{
-											height: '40vh',
-											// width: '75%',
-											objectFit: 'contain',
-											// overflow: 'hidden',
-										}}
-										src={item.image_url}
-										alt={item.name}
-									/>
-									<Carousel.Caption>
-										<p>{item.name}</p>
-									</Carousel.Caption>
-								</Carousel.Item>
-							);
-						})}
-					</Carousel>
-				</div>
-			)}
-
-			{!currentYelpData.businesses && (
-				<h2>Yelp does not support this country! </h2>
-			)}
-			{/* </Col>
-			</Row> */}
+					{!currentYelpFoodData.businesses && (
+						<h2>Yelp does not support this country! </h2>
+					)}
+				</Col>
+			</Row>
 		</div>
 	);
 }
