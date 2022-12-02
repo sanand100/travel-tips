@@ -21,8 +21,8 @@ function Search({
 	const [searchParams, setSearchParams] = useSearchParams();
 	const requestedSearch = searchParams.get('searchString');
 	const [searchString, setSearchString] = useState(requestedSearch || '');
-	const [lastSearch, setLastSearch] = useState('');
-	const [search, setSearch] = useState(false);
+	// const [lastSearch, setLastSearch] = useState('');
+	// const [search, setSearch] = useState(false);
 	// const [businesses, amountResults, searchParams, setSearchParams] =
 	// useBusinessSearch('hotel', searchString);
 
@@ -45,7 +45,7 @@ function Search({
 					}&q=${searchString.toLowerCase()}&aqi=no`
 				),
 				fetch(
-					`https://seir-cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=hotel&location=${searchString.toLowerCase()}`,
+					`https://whispering-ravine-30416.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=hotel&location=${searchString.toLowerCase()}`,
 					{
 						headers: {
 							Authorization: `Bearer ${process.env.REACT_APP_YELP_KEY}`,
@@ -53,7 +53,7 @@ function Search({
 					}
 				),
 				fetch(
-					`https://seir-cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=restaurants&location=${searchString.toLowerCase()}`,
+					`https://whispering-ravine-30416.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=restaurants&location=${searchString.toLowerCase()}`,
 					{
 						headers: {
 							Authorization: `Bearer ${process.env.REACT_APP_YELP_KEY}`,
@@ -64,7 +64,7 @@ function Search({
 					`https://api.unsplash.com/photos/random?client_id=${process.env.REACT_APP_UNSPLASHAPI_KEY}&query=${searchString}&orientation=landscape`
 				),
 				fetch(
-					`https://newsdata.io/api/1/news?apikey=pub_8642f538a869bdfc6de9d36a086cbc8a4286&q=${searchString} `
+					`https://newsdata.io/api/1/news?apikey=pub_8642f538a869bdfc6de9d36a086cbc8a4286&q=${searchString}`
 				),
 			])
 				.then(function (responses) {
