@@ -15,13 +15,34 @@ function CityDetails({
 	// covidInfo,
 	newsData,
 }) {
-	if (!weatherDataLocation) return null;
+	// if (!newsData)
+	// 	return (
+	// 		<div>
+	// 			<h2>NOT WORKING </h2>
+	// 		</div>
+	// 	);
 	return (
 		<div className='wholediv'>
-			<h2 style={{ color: 'whitesmoke' }} className='locationH2'>
-				{weatherDataLocation.name}
-			</h2>
-			{weatherDataLocation.region ? (
+			{weatherDataLocation ? (
+				<h2 style={{ color: 'whitesmoke' }} className='locationH2'>
+					{weatherDataLocation.name}
+				</h2>
+			) : (
+				<h2 style={{ color: 'whitesmoke' }} className='locationH2'>
+					Location Not Found
+				</h2>
+			)}
+
+			{weatherDataLocation ? (
+				<h4 style={{ color: 'whitesmoke' }} className='locationH4'>
+					{weatherDataLocation.country}
+				</h4>
+			) : (
+				<h4 style={{ color: 'whitesmoke' }} className='locationH4'>
+					The API could not find the requested location
+				</h4>
+			)}
+			{/* {weatherDataLocation.region ? (
 				<h4 style={{ color: 'whitesmoke' }} className='locationH4'>
 					{weatherDataLocation.region}, {weatherDataLocation.country}
 				</h4>
@@ -29,30 +50,48 @@ function CityDetails({
 				<h4 style={{ color: 'whitesmoke' }} className='locationH4'>
 					{weatherDataLocation.country}
 				</h4>
-			)}
+			)} */}
+
 			<div className='cityDetailsContainerDiv'>
 				<div className='cityDetailsCards'>
 					<Row xs={1} md={2} lg={3} xl={4}>
-						<Col>
-							<div className='weathercard'>
-								<Card bg='light' border='light' className='custom-card'>
-									<Card.Title>The current weather</Card.Title>
-									<Card.Body>
-										<Card.Text>
-											<img src={weatherDataCurrent.condition.icon} />
-											{weatherDataCurrent.condition.text}
-											<br />
-											<br />
-											Local Temperature: {weatherDataCurrent.temp_f}&deg;F
-											<br />
-											Feels Like: {weatherDataCurrent.feelslike_f}&deg;F
-											<br />
-											Local Date and Time: {weatherDataLocation.localtime}
-										</Card.Text>
-									</Card.Body>
-								</Card>
-							</div>
-						</Col>
+						{weatherDataCurrent ? (
+							<Col>
+								<div className='weathercard'>
+									<Card bg='light' border='light' className='custom-card'>
+										<Card.Title>The current weather</Card.Title>
+										<Card.Body>
+											<Card.Text>
+												<img src={weatherDataCurrent.condition.icon} />
+												{weatherDataCurrent.condition.text}
+												<br />
+												<br />
+												Local Temperature: {weatherDataCurrent.temp_f}&deg;F
+												<br />
+												Feels Like: {weatherDataCurrent.feelslike_f}&deg;F
+												<br />
+												Local Date and Time: {weatherDataLocation.localtime}
+											</Card.Text>
+										</Card.Body>
+									</Card>
+								</div>
+							</Col>
+						) : (
+							<Col>
+								<div className='weathercard'>
+									<Card bg='light' border='light' className='custom-card'>
+										<Card.Title>Weather information not found</Card.Title>
+										<Card.Body>
+											<Card.Text>
+												The API could not find the weather for the requested
+												location.
+											</Card.Text>
+										</Card.Body>
+									</Card>
+								</div>
+							</Col>
+						)}
+
 						<br />
 						<Col>
 							{newsData.results && (
@@ -63,7 +102,7 @@ function CityDetails({
 									<Carousel interval={null} className='custom-carousel'>
 										{newsData.results
 											.filter((item) => item.language === 'english')
-											.filter((item) => item.image_url !== null)
+											// .filter((item) => item.image_url !== null)
 											.map((item) => {
 												return (
 													<Carousel.Item key={item.source_id}>
@@ -94,7 +133,9 @@ function CityDetails({
 							)}
 							{!newsData.results && (
 								<div className='newscard'>
-									<h4 style={{ color: 'white' }}>Some hotels in the area:</h4>
+									<h4 style={{ color: 'white' }}>
+										Current news from the area:
+									</h4>
 									<h4 style={{ color: 'gray' }}>
 										NewsData API does not support this country!{' '}
 									</h4>
@@ -139,7 +180,7 @@ function CityDetails({
 								<div className='hotelcard'>
 									<h4 style={{ color: 'white' }}>Some hotels in the area:</h4>
 									<h4 style={{ color: 'gray' }}>
-										Yelp does not support this country!{' '}
+										YelpAPI does not support this country!{' '}
 									</h4>
 								</div>
 							)}
@@ -187,7 +228,7 @@ function CityDetails({
 										Some restaurants in the area:
 									</h4>
 									<h4 style={{ color: 'gray' }}>
-										Yelp does not support this country!{' '}
+										YelpAPI does not support this country!{' '}
 									</h4>
 								</div>
 							)}

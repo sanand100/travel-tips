@@ -16,6 +16,9 @@ function Search({
 	setBackgroundImage,
 	// setCovidInfo,
 	setNewsData,
+	currentYelpHotelData,
+	currentYelpFoodData,
+	newsData,
 }) {
 	let navigate = useNavigate();
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -78,11 +81,30 @@ function Search({
 					// Log the data to the console
 					// You would do something with both sets of data here
 					console.log(data);
+					// if (data[0].error.code == 1006) {
+					// 	setCurrentWeather({});
+					// 	// console.log(data[0].error.code == 1006);
+					// } else {
+					// 	setCurrentWeather(data[0]);
+					// }
+					// if (data[1].error.code == 'LOCATION_NOT_FOUND') {
+					// 	setCurrentYelpHotelData({});
+					// 	setCurrentYelpFoodData({});
+					// 	// console.log('hello');
+					// } else {
+					// setCurrentYelpHotelData(data[1]);
+					// setCurrentYelpFoodData(data[2]);
+					// }
 					setCurrentWeather(data[0]);
-					setCurrentYelpHotelData(data[1]);
-					setCurrentYelpFoodData(data[2]);
 					setBackgroundImage(data[3].urls.regular);
 					setNewsData(data[4]);
+					setCurrentYelpHotelData(data[1]);
+					setCurrentYelpFoodData(data[2]);
+
+					// console.log(currentWeather);
+					// console.log(currentYelpFoodData);
+					// console.log(currentYelpHotelData);
+					// console.log(newsData);
 				})
 				.catch(function (error) {
 					// if there's an error, log it
